@@ -1,0 +1,119 @@
+:root{
+  --bg:#0b1220; --card:#16233a; --line:#22324e;
+  --txt:#e8eefc; --muted:#8ea2c4;
+  --accent:#3b82f6; --accent2:#22d3ee;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;color:var(--txt);
+  background:radial-gradient(1200px 600px at 20% -10%,#1b2b4a 0%,#0b1220 55%) fixed;
+  font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  -webkit-tap-highlight-color:transparent;overscroll-behavior:none;
+}
+.app{display:flex;flex-direction:column;height:100dvh;max-width:1100px;margin:0 auto;padding:10px 14px 14px}
+
+/* ---------- Üst bar ---------- */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 4px 12px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.logo{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#06121f;font-size:20px;font-weight:800;flex:0 0 auto}
+.brand b{display:block;font-size:15px;letter-spacing:.3px}
+.brand small{display:block;color:var(--muted);font-size:11px}
+.status{font-size:12px;padding:6px 12px;border-radius:999px;background:var(--card);
+  border:1px solid var(--line);color:var(--muted);white-space:nowrap;
+  max-width:52vw;overflow:hidden;text-overflow:ellipsis}
+.status.ok{color:#bbf7d0;border-color:#14532d;background:#052e16}
+.status.wait{color:#fde68a;border-color:#78350f;background:#2a1a05}
+.status.err{color:#fecaca;border-color:#7f1d1d;background:#2a0606}
+
+/* ---------- Ekranlar ---------- */
+main{flex:1;min-height:0;display:flex;flex-direction:column}
+.screen{flex:1;min-height:0;display:flex;flex-direction:column}
+.hidden{display:none!important}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.center{text-align:center}
+
+/* ---------- Bağlantı kartı (masaüstü) ---------- */
+.connect-card{margin:auto;width:100%;max-width:470px;text-align:center;
+  background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 22px}
+.connect-card h1{font-size:19px;margin:0 0 6px}
+.qr-box{margin:18px auto;width:min(330px,72vw);aspect-ratio:1;background:#fff;
+  border-radius:16px;padding:10px;display:grid;place-items:center;overflow:hidden}
+.qr-box svg{width:100%;height:100%;display:block}
+.hint{font-size:11px;color:var(--muted);margin:16px 0 0}
+.spinner{width:34px;height:34px;border-radius:50%;
+  border:3px solid #cbd5e1;border-top-color:var(--accent);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- Kod satırı ---------- */
+.code-row{display:flex;gap:8px;margin-top:10px}
+.code-row input{flex:1;min-width:0}
+
+/* ---------- Form elemanları ---------- */
+input[type=text],input[readonly]{
+  width:100%;padding:11px 13px;border-radius:12px;border:1px solid var(--line);
+  background:#0e1a2e;color:var(--txt);font-size:14px;outline:none}
+input[type=text]:focus,input[readonly]:focus{border-color:var(--accent)}
+.btn{padding:11px 16px;border-radius:12px;border:1px solid var(--line);
+  background:#1b2a45;color:var(--txt);font-size:14px;cursor:pointer;font-weight:600;
+  transition:filter .15s,transform .05s;white-space:nowrap}
+.btn:hover{filter:brightness(1.15)}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#04121f;border-color:transparent}
+.btn.ghost{background:transparent}
+.btn.small{padding:7px 12px;font-size:12px;display:inline-block;margin-top:8px;text-decoration:none}
+.btn.icon{padding:11px 13px;font-size:16px}
+
+/* ---------- Sohbet ---------- */
+.chat-panel{flex:1;min-height:0;display:flex;flex-direction:column;
+  background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.chat{flex:1;min-height:0;overflow-y:auto;padding:16px;display:flex;
+  flex-direction:column;gap:10px;scroll-behavior:smooth}
+.msg{display:flex}
+.msg.out{justify-content:flex-end}
+.bubble{max-width:min(80%,560px);background:#1d2c47;border:1px solid var(--line);
+  border-radius:16px;padding:10px 12px;overflow-wrap:anywhere;font-size:14px}
+.msg.out .bubble{background:linear-gradient(135deg,#1d4ed8,#0e7490);
+  border-color:transparent;color:#f0f9ff}
+.composer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line);background:#101c31}
+.composer input{flex:1;min-width:0}
+
+/* ---------- Dosya kartı ---------- */
+.file-card{min-width:210px}
+.file-head{display:flex;gap:10px;align-items:center}
+.file-icon{font-size:22px;line-height:1}
+.file-meta{min-width:0}
+.file-name{font-weight:600;font-size:13px;max-width:210px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file-size{font-size:11px;opacity:.75}
+.bar{height:6px;border-radius:99px;background:rgba(255,255,255,.18);margin-top:10px;overflow:hidden}
+.bar>span{display:block;height:100%;width:0;border-radius:99px;
+  background:linear-gradient(90deg,#22d3ee,#a3e635);transition:width .15s linear}
+.pct{font-size:11px;margin-top:4px;opacity:.85}
+.preview img,.preview video{max-width:100%;border-radius:10px;margin-top:8px;display:block}
+.preview audio{width:100%;margin-top:8px}
+
+/* ---------- Mobil tarayıcı ---------- */
+.scanner-wrap{margin:auto;width:100%;max-width:420px;text-align:center;padding:8px}
+.scanner{position:relative;width:100%;aspect-ratio:1;border-radius:20px;overflow:hidden;
+  background:#000;border:1px solid var(--line)}
+.scanner video{width:100%;height:100%;object-fit:cover;display:block}
+.scan-frame{position:absolute;inset:14%;border-radius:16px;
+  box-shadow:0 0 0 9999px rgba(0,0,0,.45);border:2px solid rgba(255,255,255,.35)}
+.scan-frame span{position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg,transparent,#22d3ee,transparent);
+  animation:sweep 1.8s ease-in-out infinite}
+@keyframes sweep{0%,100%{top:0}50%{top:calc(100% - 3px)}}
+.manual{margin-top:16px;text-align:left;background:var(--card);border:1px solid var(--line);
+  border-radius:14px;padding:12px 14px}
+.manual summary{cursor:pointer;font-size:13px;color:var(--muted);outline:none}
+
+@media (max-width:520px){
+  .app{padding:8px 10px 10px}
+  .bubble{max-width:88%}
+  .brand small{display:none}
+}

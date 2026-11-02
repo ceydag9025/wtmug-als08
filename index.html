@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>ALŞ08 · Web Arayüzü (Bilgisayar)</title>
+<meta name="theme-color" content="#0b1220" />
+<meta name="description" content="WebRTC ile uçtan uca şifreli, sunucusuz P2P dosya ve mesaj aktarımı" />
+<link rel="manifest" href="./manifest.json" />
+<link rel="icon" href="./icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="./icon.svg" />
+<link rel="stylesheet" href="./style.css" />
+</head>
+<body data-role="desktop">
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">⇄</span>
+      <div><b>ALŞ08</b><small>P2P Mesaj &amp; Dosya Aktarımı</small></div>
+    </div>
+    <div id="status" class="status">Başlatılıyor…</div>
+  </header>
+
+  <main>
+    <!-- ============ BAĞLANTI EKRANI ============ -->
+    <section id="screenConnect" class="screen">
+      <div class="connect-card">
+        <h1>Telefonunuzu bağlayın</h1>
+        <p class="muted">Telefonunuzdan <b>mobile.html</b> sayfasını açın ve aşağıdaki QR kodu okutun.</p>
+
+        <div id="qrBox" class="qr-box"><div class="spinner"></div></div>
+
+        <p class="muted small">QR okutamıyorsanız bu kodu mobil sayfaya elle girin:</p>
+        <div class="code-row">
+          <input id="codeText" readonly placeholder="Kimlik üretiliyor…" />
+          <button id="copyCode" class="btn ghost" type="button">Kopyala</button>
+        </div>
+
+        <p class="hint">Verileriniz <b>hiçbir sunucuya kaydedilmez</b>; bağlantı doğrudan cihazlar arasındadır (DTLS ile şifreli).</p>
+      </div>
+    </section>
+
+    <!-- ============ SOHBET EKRANI ============ -->
+    <section id="screenChat" class="screen hidden">
+      <div class="chat-panel">
+        <div id="chat" class="chat"></div>
+        <div class="composer">
+          <button id="fileBtn" class="btn icon" type="button" title="Dosya gönder">📎</button>
+          <input type="file" id="fileInput" multiple hidden />
+          <input id="msgInput" type="text" placeholder="Mesaj yazın…" autocomplete="off" />
+          <button id="sendBtn" class="btn primary" type="button">Gönder</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+<title>ALŞ08 · Mobil Arayüzü</title>
+<meta name="theme-color" content="#0b1220" />
+<link rel="manifest" href="./manifest.json" />
+<link rel="icon" href="./icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="./icon.svg" />
+<link rel="stylesheet" href="./style.css" />
+</head>
+<body data-role="mobile">
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">⇄</span>
+      <div><b>ALŞ08</b><small>Mobil Arayüz</small></div>
+    </div>
+    <div id="status" class="status">Başlatılıyor…</div>
+  </header>
+
+  <main>
+    <!-- ============ TARAYICI EKRANI ============ -->
+    <section id="screenConnect" class="screen">
+      <div class="scanner-wrap">
+        <div class="scanner">
+          <video id="scanVideo" playsinline muted></video>
+          <canvas id="scanCanvas" hidden></canvas>
+          <div class="scan-frame"><span></span></div>
+        </div>
+        <p class="muted small center">Bilgisayar ekranındaki QR kodu kameraya tutun</p>
+
+        <details class="manual">
+          <summary>Kamera çalışmıyor mu? Kodu elle girin</summary>
+          <div class="code-row">
+            <input id="codeInput" type="text" placeholder="als08-xxxxxxxx" autocomplete="off" />
+            <button id="connectBtn" class="btn primary" type="button">Bağlan</button>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ SOHBET EKRANI ============ -->
+    <section id="screenChat" class="screen hidden">
+      <div class="chat-panel">
+        <div id="chat" class="chat"></div>
+        <div class="composer">
+          <button id="fileBtn" class="btn icon" type="button" title="Dosya gönder">📎</button>
+          <input type="file" id="fileInput" multiple hidden />
+          <input id="msgInput" type="text" placeholder="Mesaj yazın…" autocomplete="off" />
+          <button id="sendBtn" class="btn primary" type="button">Gönder</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
